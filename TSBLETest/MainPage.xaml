@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TSBLETest.MainPage" xmlns:data="clr-namespace:TSBLETest.ViewModels">
+
+<ContentPage.Resources>
+    <ResourceDictionary>
+        <data:IDeviceToStringConverter x:Key="IDeviceStringConverter"/>
+        <data:IDeviceToBoolenConverter x:Key="IDeviceBoolenConverter"/>
+        <data:BoolenIConverter x:Key="BoolenIConverter"/>
+        <data:ImageSourceConverter x:Key="ImageConverter"/>
+        <Style x:Key="HeadLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="Red"/>
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+        <Style x:Key="MainLabelStyle" TargetType="Label" BasedOn="{StaticResource HeadLabelStyle}">
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </ResourceDictionary>
+</ContentPage.Resources>
+
+<Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="4*"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="DPB BLE Test" Style="{StaticResource HeadLabelStyle}" HorizontalTextAlignment ="Center" VerticalTextAlignment="Center"/>
+    <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Source="{Binding IsScanning, Converter={StaticResource ImageConverter}, Mode=OneWay}" IsAnimationPlaying="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+    <Label Grid.Row="2" Grid.Column="0" Text="Last Device: " Style="{StaticResource MainLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+    <Entry x:Name="entry_Device" Grid.Row="2" Grid.Column="1" IsEnabled="False" FontSize="20" Text="{Binding DeviceInfo_ID, Converter={StaticResource IDeviceStringConverter}, Mode=OneWay}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+    <Button x:Name="btn_clear" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Clear" IsVisible="{Binding DeviceInfo_ID, Mode=OneWay, Converter={StaticResource IDeviceBoolenConverter}}" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+    <Button x:Name="btn_stop" Grid.Row="4" Grid.Column="0"  IsEnabled="{Binding IsScanning, Mode=OneWay}" Text="Stop" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+    <Button x:Name="btn_start" Grid.Row="4" Grid.Column="1" IsEnabled="{Binding IsScanning, Converter={StaticResource BoolenIConverter}, Mode=OneWay}" Text="Start" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+</Grid>
+</ContentPage>
