@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "j7vEchvVZ5KeGv1dagTSTjeXsp82m8hnYrIlAi55scWYGTon/5ZFd6Mmq8dkixLo7DTPJSugF3RVZqWDIKoPFg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jerry\\source\\repos\\TSBLETest\\TSBLETest.iOS\\TSBLETest.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jerry\\.nuget\\packages\\plugin.ble\\2.1.1\\plugin.ble.2.1.1.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
+    "C:\\Users\\jerry\\.nuget\\packages\\xamarin.forms\\4.6.0.967\\xamarin.forms.4.6.0.967.nupkg.sha512"
+  ],
+  "logs": []
+}

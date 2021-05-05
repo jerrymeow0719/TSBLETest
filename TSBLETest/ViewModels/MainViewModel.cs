@@ -11,13 +11,14 @@ namespace TSBLETest.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        string PairDeviceName = "BLE_TEST";
+        string PairDeviceName = "DPB30_920BE7";
 
         //Plugin
         IBluetoothLE bleInterface;
         IAdapter bleAdapter;
         public IDevice _device = null;
         public bool _isScan = false;
+        public int _ScanCount = 0;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public IDevice DeviceInfo_ID
@@ -40,6 +41,16 @@ namespace TSBLETest.ViewModels
             }
         }
 
+        public int ScanCount
+        {
+            get { return _ScanCount; }
+            set
+            {
+                _ScanCount = value;
+                RaisePropertyChanged();
+            }
+        }
+
         protected void RaisePropertyChanged([CallerMemberName] string caller = "")
         {
             if(PropertyChanged != null)
@@ -55,6 +66,7 @@ namespace TSBLETest.ViewModels
 
             try
             {
+                bleAdapter.ScanMode = ScanMode.LowLatency;
                 bleAdapter.DeviceDiscovered += BleAdapter_DeviceDiscovered;
                 bleAdapter.ScanTimeoutElapsed += BleAdapter_ScanTimeoutElapsed;
                 bleAdapter.ScanTimeout = 3000;
@@ -62,7 +74,9 @@ namespace TSBLETest.ViewModels
                 if (!bleInterface.Adapter.IsScanning)
                 {
                     await bleAdapter.StartScanningForDevicesAsync();
-                    IsScanning = true;
+                    IsScanning =true;
+                    if (_ScanCount == 0)
+                        ScanCount = 1;
                 }
             }
             catch (Exception)
@@ -74,6 +88,7 @@ namespace TSBLETest.ViewModels
         {
             await bleAdapter.StopScanningForDevicesAsync();
             IsScanning = false;
+            //ScanCount = 0;
         }
 
         private void BleAdapter_ScanTimeoutElapsed(object sender, EventArgs e)
@@ -90,11 +105,23 @@ namespace TSBLETest.ViewModels
                 if (DeviceInfo_ID == null || DeviceInfo_ID.Id != e.Device.Id)
                 {
                     DeviceInfo_ID = e.Device;
+                    ScanCount++;
+                    if (_ScanCount == 10)
+                        ScanCount = 1;
 
                     //Connect to device
                     if (DeviceInfo_ID != null)
                     {
-                        await bleAdapter.ConnectToDeviceAsync(DeviceInfo_ID);
+                        try
+                        {
+                            await bleAdapter.ConnectToDeviceAsync(DeviceInfo_ID);
+                        }
+                        catch 
+                        {
+                            await bleAdapter.StopScanningForDevicesAsync();
+                            IsScanning = false;
+                            return;
+                        }
                     }
 
                     await bleAdapter.StopScanningForDevicesAsync();
@@ -104,6 +131,7 @@ namespace TSBLETest.ViewModels
                     IList<IService> Services;
                     IService Service;
                     Services = (IList<IService>)await DeviceInfo_ID.GetServicesAsync();
+
                     Service = Services.First(item => item.Id.ToString().Contains("fd00"));
 
                     //Read specific characteristic

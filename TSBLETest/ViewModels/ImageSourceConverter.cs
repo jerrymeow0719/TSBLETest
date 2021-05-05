@@ -8,9 +8,10 @@ namespace TSBLETest.ViewModels
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            bool result = (bool)value;
-            if (result)
-                return "animal.gif";
+            int result  = (int)value % 10;
+
+            if (result != 0)
+                return "img0" + result.ToString()  + ".gif";
             else
                 return string.Empty;
         }

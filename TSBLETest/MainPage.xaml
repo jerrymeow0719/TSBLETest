@@ -22,7 +22,7 @@
 <Grid>
     <Grid.RowDefinitions>
         <RowDefinition Height="*"/>
-        <RowDefinition Height="4*"/>
+        <RowDefinition Height="*"/>
         <RowDefinition Height="*"/>
         <RowDefinition Height="*"/>
         <RowDefinition Height="*"/>
@@ -33,7 +33,9 @@
     </Grid.ColumnDefinitions>
 
     <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="DPB BLE Test" Style="{StaticResource HeadLabelStyle}" HorizontalTextAlignment ="Center" VerticalTextAlignment="Center"/>
-    <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Source="{Binding IsScanning, Converter={StaticResource ImageConverter}, Mode=OneWay}" IsAnimationPlaying="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+        <Image  Source="{Binding ScanCount, Converter={StaticResource ImageConverter}, Mode=OneWay}" IsAnimationPlaying="True" WidthRequest="50" HeightRequest="50" VerticalOptions="CenterAndExpand"/>
+    </StackLayout>
     <Label Grid.Row="2" Grid.Column="0" Text="Last Device: " Style="{StaticResource MainLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
     <Entry x:Name="entry_Device" Grid.Row="2" Grid.Column="1" IsEnabled="False" FontSize="20" Text="{Binding DeviceInfo_ID, Converter={StaticResource IDeviceStringConverter}, Mode=OneWay}" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
     <Button x:Name="btn_clear" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Clear" IsVisible="{Binding DeviceInfo_ID, Mode=OneWay, Converter={StaticResource IDeviceBoolenConverter}}" FontSize="20" FontAttributes="Bold" TextColor="Black"/>

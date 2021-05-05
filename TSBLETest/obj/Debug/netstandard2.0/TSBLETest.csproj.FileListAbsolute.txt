@@ -1,0 +1,14 @@
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\bin\Debug\netstandard2.0\TSBLETest.deps.json
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\bin\Debug\netstandard2.0\TSBLETest.dll
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\bin\Debug\netstandard2.0\ref\TSBLETest.dll
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\bin\Debug\netstandard2.0\TSBLETest.pdb
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\obj\Debug\netstandard2.0\TSBLETest.AssemblyInfoInputs.cache
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\obj\Debug\netstandard2.0\TSBLETest.AssemblyInfo.cs
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\obj\Debug\netstandard2.0\TSBLETest.csproj.CoreCompileInputs.cache
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\obj\Debug\netstandard2.0\TSBLETest.dll
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\obj\Debug\netstandard2.0\ref\TSBLETest.dll
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\obj\Debug\netstandard2.0\TSBLETest.pdb
+C:\Users\jerry\source\repos\TSBLETest\TSBLETest\obj\Debug\netstandard2.0\TSBLETest.csprojAssemblyReference.cache
